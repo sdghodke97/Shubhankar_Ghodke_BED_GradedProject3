@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+	
+<style>
+	
+	.container{
+		
+	}
+	h3{
+		color:white;
+		background-color:blue;
+		padding:10px;
+		margin:0px;	
+		border-radius:5px;	
+	}	
+	
+	nav{
+		background-color:blue;
+		padding: 10px;
+		margin-bottom:10px;
+		border-radius:5px;
+	}
+	input,label{			
+		margin:0px 5px;
+		padding:5px;
+		width:95%;
+	}
+	textarea{
+		display:block;
+		margin:5px;
+		padding:5px;
+		width:95%;
+	}
+	form{
+		display:block;
+		width:50%;
+		margin: auto;
+		border:1px solid gray;
+		border-radius:5px;
+	}
+	button{
+		display:block;
+		margin:auto;
+		margin-bottom:10px;
+		padding:5px 10px;
+		color:white;
+		background-color: blue;
+		border-radius:5px;
+		border:0px solid blue;
+	}
+</style>
+
+<title>Create Ticket</title>
+</head>
+<body>
+
+	<div class="container">
+		<h3>Create Ticket</h3>
+		
+
+		<nav>
+			<a th:href="@{/tickets/showtickets}" class="btn btn-primary btn-sm mb-3">Tickets</a>
+			<a th:href="@{#}" class="btn btn-primary btn-sm mb-3">New Ticket</a>
+		</nav>
+
+		<form action="#" th:action="@{/tickets/saveticket}"
+			th:object="${ticket}" method="POST">
+
+			<label>Title</label>
+			<input type="hidden" th:field="*{Id}" />
+			
+			 <input type="text"
+				th:field="*{Ticket_Title}" 
+				palceholder="Ticket Title" />
+			
+			<label>Description</label>
+			<input type="text"
+				th:field="*{Ticket_Discription}" 
+				palceholder="Ticket Short Discription" />
+			
+			<label>Date</label>
+			<input type="date"
+				th:field="*{Created_Date}" 
+				palceholder="Created_Date" />
+			
+			<label>Content</label>	
+			<textarea id="content" name="content" placeholder="Paragraph" required></textarea>
+            <br>
+
+			<button type="submit" class="" btn btn-info col-2>Save</button>
+
+		</form>
+
+		<hr>
+		<a th:href="@{/tickets/showtickets}">Back to Ticket List</a>
+
+	</div>
+
+</body>
+</html>
